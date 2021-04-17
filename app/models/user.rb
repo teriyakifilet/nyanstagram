@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :cats, dependent: :destroy
 
   validates :user_name, presence: true, length: { minimum: 4, maximum: 32 }
+  validates :user_profile, allow_blank: true, length: { maximum: 255 }
 
   # パスワードは半角英数字混合での入力が必須
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
