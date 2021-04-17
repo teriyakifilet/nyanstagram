@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 class CatsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
 
-  def index
-  end
+  def index; end
 
   def new
     @cat = Cat.new

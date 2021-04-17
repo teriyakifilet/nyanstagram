@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :cat do
     cat_name        { Faker::Creature::Cat.name }
