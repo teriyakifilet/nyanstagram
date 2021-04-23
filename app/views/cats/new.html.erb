@@ -1,0 +1,27 @@
+<%= form_with model: @cat, url: cats_path, local: true do |f| %>
+  <%= render 'shared/error_messages', model: f.object%>
+  <div>ねこちゃん情報</div>
+  <div>
+    おなまえ
+    <%= f.text_field :cat_name, placeholder: "おなまえ（必須）" , maxlength:"40" %>
+  </div>
+  <div>
+    ねんれい
+    <%= f.text_field :cat_age, placeholder: "1歳未満は0" %>さい
+  </div>
+  <div>
+    せいべつ
+    <%= f.collection_select(:cat_sex_id, CatSex.all, :id, :name, {}) %>
+  </div>
+  <div>
+    ひんしゅ
+    <%= f.collection_select(:cat_breed_id, CatBreed.all, :id, :name, {}) %>
+  </div>
+  <div>
+    おしゃしん
+   <%= f.file_field :icon %>
+  </div>
+  <div>
+    <%= f.submit "登録する" %>
+  </div>
+<% end%>
