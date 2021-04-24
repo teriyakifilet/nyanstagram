@@ -1,0 +1,28 @@
+<p>仮ユーザー詳細ページ
+<div>
+  <%= @user.user_name %>さんのねこちゃん
+</div>
+<div class="cat-contents">
+  <% if @cats.present? %>
+    <ul class="cat-lists">
+      <% @cats.each do |cat| %>
+        <li>
+          <%#= link_to cats_path(cat) %>
+            <div class>
+              <%= image_tag cat.icon, class: "cat-icon"%>
+            </div>
+            <div>
+              お名前 <%= cat.cat_name %>
+            </div>
+            <div>
+              品種 <%= cat.cat_breed.name %>
+            </div>
+            <div>
+              年齢 <%= cat.cat_age if cat.cat_age.present? %>さい
+            </div>
+            <div>
+              性別 <%= cat.cat_sex.name %>
+            </div>
+      <% end%>
+  <% end %>
+</div>

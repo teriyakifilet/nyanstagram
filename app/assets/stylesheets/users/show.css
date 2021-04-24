@@ -1,0 +1,22 @@
+.cat-contents {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10vh;
+}
+
+.cat-lists {
+  width: 90vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+}
+
+.cat-icon {
+  height: 25vh;
+  width: 30vw;
+  min-height: 500px;
+  background-color: rgb(255, 255, 255);
+  object-fit: contain;
+}
