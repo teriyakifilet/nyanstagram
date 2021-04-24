@@ -1,9 +1,15 @@
 <h1>nyanstagram</h1>
-<p>仮トップページ
 <% if user_signed_in? %>
-  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-  <%= link_to "新規ねこちゃん", new_cat_path %>
+  <div>
+    <p>ようこそ、<%= link_to current_user.user_name, user_path(current_user.id) %>さん
+    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+  </div>
+  <div>
+    <%= link_to "新規ねこちゃん", new_cat_path %>
+  </div>
 <% else %>
-  <%= link_to "ログイン", new_user_session_path %>
-  <%= link_to "新規登録", new_user_registration_path %>
+  <div>
+    <%= link_to "ログイン", new_user_session_path %>
+    <%= link_to "新規登録", new_user_registration_path %>
+  </div>
 <% end %>
