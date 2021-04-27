@@ -3,7 +3,9 @@
 class CatsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
 
-  def index; end
+  def index
+    @photos = Photo.includes(:cats).order("created_at DESC").limit(5)
+  end
 
   def new
     @cat = Cat.new

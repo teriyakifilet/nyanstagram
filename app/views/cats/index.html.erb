@@ -6,6 +6,7 @@
   </div>
   <div>
     <%= link_to "新規ねこちゃん", new_cat_path %>
+    <%= link_to "新規写真投稿", new_photo_path %>
   </div>
 <% else %>
   <div>
@@ -13,3 +14,19 @@
     <%= link_to "新規登録", new_user_registration_path %>
   </div>
 <% end %>
+<div>
+  <ul class="new-photo-list">
+    <h3>新着ねこちゃん写真</h3>
+    <% if @photos.present? %>
+      <% @photos.each do |photo| %>
+        <li class="new-photo-column">
+          <%#= link_ to ねこ詳細_path(cat) do %>
+            <%= image_tag photo.cat_photo, class: "cat-photo" %>
+          <%# end %>
+      <% end %>
+    <% else %>
+      まだ誰もねこちゃん写真を投稿していないようです。
+      <%= link_to "ねこちゃん写真を投稿する", new_photo_path %>
+    <% end %>
+  </ul>
+</div>
