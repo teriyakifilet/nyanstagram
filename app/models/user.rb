@@ -7,6 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :cats, dependent: :destroy
+  has_many :photos, dependent: :destroy
 
   validates :user_name, presence: true, length: { minimum: 4, maximum: 32 }
   validates :user_profile, allow_blank: true, length: { maximum: 255 }
