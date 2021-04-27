@@ -1,28 +1,45 @@
-<p>仮ユーザー詳細ページ
-<div>
-  <%= @user.user_name %>さんのねこちゃん
-</div>
+<h2>仮ユーザー詳細ページ</h2>
 <div class="cat-contents">
   <% if @cats.present? %>
+    <h3><%= @user.user_name %>さんのねこちゃん</h3>
     <ul class="cat-lists">
       <% @cats.each do |cat| %>
-        <li>
-          <%#= link_to cats_path(cat) %>
-            <div class>
-              <%= image_tag cat.icon, class: "cat-icon"%>
-            </div>
-            <div>
-              お名前 <%= cat.cat_name %>
-            </div>
-            <div>
-              品種 <%= cat.cat_breed.name %>
-            </div>
-            <div>
-              年齢 <%= cat.cat_age if cat.cat_age.present? %>さい
-            </div>
-            <div>
-              性別 <%= cat.cat_sex.name %>
-            </div>
-      <% end%>
-  <% end %>
+        <li class="cat-list">
+          <div class>
+            <%#= link_to cats_path(cat) %>
+            <%= image_tag cat.icon, class: "cat-image"%>
+          </div>
+          <div>
+            お名前 <%= cat.cat_name %>
+          </div>
+          <div>
+            品種 <%= cat.cat_breed.name %>
+          </div>
+          <div>
+            年齢 <%= cat.cat_age if cat.cat_age.present? %>さい
+          </div>
+          <div>
+            性別 <%= cat.cat_sex.name %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+      <% if @photos.present? %>
+        <h3><%= @user.user_name %>さんの投稿した写真</h3>
+        <ul class="cat-lists">
+          <% @photos.each do |photo| %>
+            <%#= link_to photos_path(photo) %>
+              <li class="cat-list">
+                <%= image_tag photo.cat_photo, class: "cat-image"%>
+              </li>
+          <% end %>
+        </ul>
+      <% else %>
+          <span><%= @user.user_name %>さんはまだねこちゃん写真を投稿していないようです。</span>
+          <%= link_to "ねこちゃん写真を投稿する", new_photo_path %>
+      <% end %>
+  <% else %>
+    <span>まだねこちゃんを登録していないようです。</span>
+    <%= link_to "ねこちゃんを登録する", new_cat_path %>
+  <% end%>
 </div>

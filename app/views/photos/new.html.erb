@@ -1,0 +1,20 @@
+<%= form_with model: @photo, url: photos_path, local: true do |f| %>
+  <%= render 'shared/error_messages', model: f.object%>
+  <div>新規ねこちゃん写真投稿</div>
+  <div>
+    おしゃしん
+   <%= f.file_field :cat_photo %>
+  <div>
+    コメント
+    <%= f.text_area :detail, placeholder: "コメント（255文字以内）" , maxlength:"255" %>
+  </div>
+  <div>
+    うつっているねこちゃん
+      <%= f.collection_check_boxes(:cat_ids, current_user.cats.all, :id, :cat_name) do |b| %>
+        <%= b.label { b.check_box + b.text } %>
+      <% end %>
+  </div>
+  <div>
+    <%= f.submit "登録する" %>
+  </div>
+<% end%>

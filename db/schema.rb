@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -12,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_210_414_134_613) do
+ActiveRecord::Schema.define(version: 20_210_427_065_544) do
   create_table 'active_storage_attachments', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4', force: :cascade do |t|
     t.string 'name', null: false
     t.string 'record_type', null: false
@@ -35,6 +33,15 @@ ActiveRecord::Schema.define(version: 20_210_414_134_613) do
     t.index ['key'], name: 'index_active_storage_blobs_on_key', unique: true
   end
 
+  create_table 'cat_photos', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4', force: :cascade do |t|
+    t.bigint 'cat_id', null: false
+    t.bigint 'photo_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['cat_id'], name: 'index_cat_photos_on_cat_id'
+    t.index ['photo_id'], name: 'index_cat_photos_on_photo_id'
+  end
+
   create_table 'cats', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4', force: :cascade do |t|
     t.string 'cat_name', null: false
     t.integer 'cat_sex_id'
@@ -44,6 +51,14 @@ ActiveRecord::Schema.define(version: 20_210_414_134_613) do
     t.datetime 'updated_at', precision: 6, null: false
     t.bigint 'user_id', null: false
     t.index ['user_id'], name: 'index_cats_on_user_id'
+  end
+
+  create_table 'photos', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4', force: :cascade do |t|
+    t.text 'detail'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.bigint 'user_id', null: false
+    t.index ['user_id'], name: 'index_photos_on_user_id'
   end
 
   create_table 'users', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4', force: :cascade do |t|
@@ -61,5 +76,8 @@ ActiveRecord::Schema.define(version: 20_210_414_134_613) do
   end
 
   add_foreign_key 'active_storage_attachments', 'active_storage_blobs', column: 'blob_id'
+  add_foreign_key 'cat_photos', 'cats'
+  add_foreign_key 'cat_photos', 'photos'
   add_foreign_key 'cats', 'users'
+  add_foreign_key 'photos', 'users'
 end
