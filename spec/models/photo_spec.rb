@@ -2,8 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Photo, type: :model do
   before do
+    user = FactoryBot.create(:user)
     cat = FactoryBot.create(:cat)
-    @photo = FactoryBot.build(:photo, cat_ids: cat.id)
+    @photo = FactoryBot.build(:photo, user_id: user.id, cat_ids: cat.id)
+    sleep(1) # Mysql2エラー防止
   end
 
   describe '新規写真投稿機能' do
@@ -27,6 +29,11 @@ RSpec.describe Photo, type: :model do
         @photo.cat_ids = ''
         @photo.valid?
         expect(@photo.errors.full_messages).to include("Cat ids can't be blank")
+      end
+      it 'ユーザーidがなければ投稿できない' do
+        @photo.user_id = ''
+        @photo.valid?
+        expect(@photo.errors.full_messages).to include("User must exist")
       end
     end
   end
