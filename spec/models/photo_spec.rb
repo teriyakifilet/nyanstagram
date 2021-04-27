@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Photo, type: :model do
   before do
     cat = FactoryBot.create(:cat)
-    @photo = FactoryBot.build(:photo, cat_ids: cat.id )
+    @photo = FactoryBot.build(:photo, cat_ids: cat.id)
   end
 
   describe '新規写真投稿機能' do
