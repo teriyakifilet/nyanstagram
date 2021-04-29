@@ -1,0 +1,36 @@
+<div class="contents-wrapper">
+  <div class="cat-information-wrapper">
+    <div class="cat-information-icon">
+      <%= image_tag @cat.icon, class: "cat-icon" %>
+    </div>
+    <div class="cat-information-detail">
+      <ul class="cat-information-list">
+        <li><h2><%= @cat.cat_name%>ちゃん</h3>
+        <li><%= link_to "#{@cat.user.user_name}さん", user_path(@cat.user) %>ちのねこちゃんです
+        <li>品種 <%= @cat.cat_breed.name %>
+        <li>性別 <%= @cat.cat_sex.name %>
+        <li>年齢 <%= @cat.cat_age %>さい
+      </ul>
+    </div>
+  </div>
+  <div class="cat-photos-wrapper">
+    <div class="cat-photos-title">
+      <h3><%= @cat.cat_name %>ちゃんのお写真</h3>
+    </div>
+    <% if @photos.present? %>
+      <div class="cat-photos">
+        <% @photos.each do |photo| %>
+          <div class="cat-photo">
+            <%= image_tag photo.cat_photo, class: "cat-image"%>
+            <%= photo.detail%>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      まだお写真が投稿されていないようです。
+      <% if @cat.user_id == current_user.id %>
+        <%= link_to "写真を投稿する", new_photo_path %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

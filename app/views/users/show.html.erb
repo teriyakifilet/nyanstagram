@@ -6,8 +6,9 @@
       <% @cats.each do |cat| %>
         <li class="cat-list">
           <div class>
-            <%#= link_to cats_path(cat) %>
-            <%= image_tag cat.icon, class: "cat-image"%>
+            <%= link_to cat_path(cat) do %>
+              <%= image_tag cat.icon, class: "cat-image"%>
+            <% end%>
           </div>
           <div>
             お名前 <%= cat.cat_name %>
