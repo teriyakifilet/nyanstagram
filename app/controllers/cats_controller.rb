@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class CatsController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @photos = Photo.includes(:cats).order('created_at DESC').limit(5)
@@ -17,6 +17,11 @@ class CatsController < ApplicationController
       redirect_to root_path
     else render :new
     end
+  end
+
+  def show
+    @cat = Cat.includes(:user, :photos).find(params[:id])
+    @photos = @cat.photos
   end
 
   private
