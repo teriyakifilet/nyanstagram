@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class CatsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: %i[index show]
 
   def index
     @photos = Photo.includes(:cats).order('created_at DESC').limit(5)

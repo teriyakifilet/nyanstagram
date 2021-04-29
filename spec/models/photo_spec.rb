@@ -33,7 +33,7 @@ RSpec.describe Photo, type: :model do
       it 'ユーザーidがなければ投稿できない' do
         @photo.user_id = ''
         @photo.valid?
-        expect(@photo.errors.full_messages).to include("User must exist")
+        expect(@photo.errors.full_messages).to include('User must exist')
       end
     end
   end
