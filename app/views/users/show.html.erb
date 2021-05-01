@@ -29,9 +29,10 @@
         <h3><%= @user.user_name %>さんの投稿した写真</h3>
         <ul class="cat-lists">
           <% @photos.each do |photo| %>
-            <%#= link_to photos_path(photo) %>
               <li class="cat-list">
-                <%= image_tag photo.cat_photo, class: "cat-image"%>
+                <%= link_to photo_path(photo) do %>
+                  <%= image_tag photo.cat_photo, class: "cat-image"%>
+                <% end %>
               </li>
           <% end %>
         </ul>

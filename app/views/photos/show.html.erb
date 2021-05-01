@@ -1,0 +1,21 @@
+<div class="contents-wrapper">
+  <div class="photo-wrapper">
+    <%= image_tag @photo.cat_photo, class: "photo-image" %>
+    <h4><%= @photo.detail %></h4>
+    <h5>投稿日時　<%= @photo.created_at %></h5>
+    <h5><%= link_to @photo.user.user_name, user_path(@photo.user) %>
+  </div>
+  <div class="link-wrapper">
+    <div class="link-title">
+      <h4>うつっているねこちゃん</h4>
+    </div>
+    <div class="link-cats">
+      <% @photo.cats.each do |cat| %>
+       <div class="link-cat">
+        <%= link_to cat.cat_name, cat_path(cat) %>
+        <%= image_tag cat.icon, class: "icon-image" %>
+       </div> 
+      <% end %>
+    </div>
+  </div>
+</div>

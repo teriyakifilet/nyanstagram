@@ -20,9 +20,9 @@
     <% if @photos.present? %>
       <% @photos.each do |photo| %>
         <li class="new-photo-column">
-          <%#= link_ to ねこ詳細_path(cat) do %>
+          <%= link_to photo_path(photo) do %>
             <%= image_tag photo.cat_photo, class: "cat-photo" %>
-          <%# end %>
+          <% end %>
       <% end %>
     <% else %>
       まだ誰もねこちゃん写真を投稿していないようです。
