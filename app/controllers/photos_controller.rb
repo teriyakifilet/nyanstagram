@@ -17,6 +17,12 @@ class PhotosController < ApplicationController
     @photo = Photo.includes(:cats, :user).find(params[:id])
   end
 
+  def edit
+  end
+
+  def update
+  end
+  
   private
 
   def photo_params
