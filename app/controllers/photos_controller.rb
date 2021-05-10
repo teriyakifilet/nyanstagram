@@ -1,6 +1,7 @@
 class PhotosController < ApplicationController
   before_action :authenticate_user!, except: [:show]
-  before_action :set_photo, only: %i[show edit update]
+  before_action :set_photo, only: %i[show edit update destroy]
+  before_action :user_id_verification, only: %i[edit update destroy]
 
   def new
     @photo = Photo.new
@@ -26,6 +27,11 @@ class PhotosController < ApplicationController
     end
   end
 
+  def destroy
+    @photo.destroy
+    redirect_to root_path
+  end
+
   private
 
   def photo_params
@@ -34,5 +40,9 @@ class PhotosController < ApplicationController
 
   def set_photo
     @photo = Photo.includes(:cats, :user).find(params[:id])
+  end
+
+  def user_id_verification
+    redirect_to root_path unless current_user.id == @photo.user_id      
   end
 end
