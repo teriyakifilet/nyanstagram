@@ -1,6 +1,9 @@
 <div class="contents-wrapper">
   <div class="photo-wrapper">
     <%= image_tag @photo.cat_photo, class: "photo-image" %>
+    <% if current_user == @photo.user %>
+      <h5><%= link_to "編集する", edit_photo_path(@photo) %></h5>
+    <% end %>
     <h4><%= @photo.detail %></h4>
     <h5>投稿日時　<%= @photo.created_at %></h5>
     <h5><%= link_to @photo.user.user_name, user_path(@photo.user) %>

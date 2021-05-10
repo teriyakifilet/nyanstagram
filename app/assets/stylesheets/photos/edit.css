@@ -1,0 +1,7 @@
+.photo-image {
+  height: 50vh;
+  width: 60vw;
+  min-height: 800px;
+  background-color: rgb(255, 255, 255);
+  object-fit: contain;
+}
