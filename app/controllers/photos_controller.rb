@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
   before_action :authenticate_user!, except: [:show]
-  before_action :set_photo, only: [:show, :edit, :update]
+  before_action :set_photo, only: %i[show edit update]
 
   def new
     @photo = Photo.new
@@ -14,11 +14,9 @@ class PhotosController < ApplicationController
     end
   end
 
-  def show
-  end
+  def show; end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @photo.update(photo_params)
