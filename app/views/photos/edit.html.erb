@@ -1,0 +1,19 @@
+<%= form_with model: @photo, url: photo_path(@photo), local: true do |f| %>
+  <%= render 'shared/error_messages', model: f.object%>
+  <div>ねこちゃん写真情報編集</div>
+  <div>
+    <%= image_tag @photo.cat_photo, class: "photo-image" %>
+  <div>
+    コメント
+    <%= f.text_area :detail, placeholder: "コメント（255文字以内）" , maxlength:"255" %>
+  </div>
+  <div>
+    うつっているねこちゃん
+      <%= f.collection_check_boxes(:cat_ids, current_user.cats.all, :id, :cat_name) do |b| %>
+        <%= b.label { b.check_box + b.text } %>
+      <% end %>
+  </div>
+  <div>
+    <%= f.submit "更新する" %>
+  </div>
+<% end%>
