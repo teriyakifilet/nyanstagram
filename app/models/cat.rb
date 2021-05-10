@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Cat < ApplicationRecord
-  has_many :cat_photos
+  has_many :cat_photos, dependent: :destroy
   has_many :photos, through: :cat_photos
   belongs_to :user
   has_one_attached :icon
