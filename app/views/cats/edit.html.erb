@@ -24,4 +24,7 @@
   <div>
     <%= f.submit "編集する" %>
   </div>
+  <div>
+    <%= link_to "削除する", cat_path(@cat), method: :delete, data: { confirm: "本当に削除しますか？この操作は取り消せません。" } %>
+  </div>
 <% end%>
