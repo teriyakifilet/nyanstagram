@@ -43,6 +43,6 @@ class PhotosController < ApplicationController
   end
 
   def user_id_verification
-    redirect_to root_path unless current_user.id == @photo.user_id      
+    redirect_to root_path unless current_user.id == @photo.user_id
   end
 end
