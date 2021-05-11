@@ -10,6 +10,7 @@
         <li>品種 <%= @cat.cat_breed.name %>
         <li>性別 <%= @cat.cat_sex.name %>
         <li>年齢 <%= @cat.cat_age %>さい
+        <li><h4><%= link_to "編集する", edit_cat_path(@cat) %></h4>
       </ul>
     </div>
   </div>
