@@ -2,8 +2,8 @@
 
 class CatsController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
-  before_action :set_cat, only: %i[show edit update]
-  before_action :user_id_verification, only: %i[edit update]
+  before_action :set_cat, only: %i[show edit update destroy]
+  before_action :user_id_verification, only: %i[edit update destroy]
 
   def index
     @photos = Photo.includes(:cats).order('created_at DESC').limit(5)
@@ -35,6 +35,8 @@ class CatsController < ApplicationController
   end
 
   def destroy
+    @cat.destroy
+    redirect_to root_path
   end
 
   private
