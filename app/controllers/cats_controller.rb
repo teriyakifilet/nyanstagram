@@ -25,8 +25,7 @@ class CatsController < ApplicationController
     @photos = @cat.photos
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @cat.update(cat_params)
