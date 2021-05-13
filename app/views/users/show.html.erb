@@ -1,4 +1,12 @@
 <h2>仮ユーザー詳細ページ</h2>
+<div class="user-contents">
+  <h3><%= @user.user_name %>さん</h3>
+  <h4>プロフィール</h4>
+  <p><%= @user.user_profile %></p>
+  <% if current_user.id == @user.id %>
+    <%= link_to "退会する", user_path(@user), method: :delete, data: { confirm: "本当に退会しますか？この操作は取り消せません。" } %>
+  <% end %>
+</div>
 <div class="cat-contents">
   <% if @cats.present? %>
     <h3><%= @user.user_name %>さんのねこちゃん</h3>
