@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   end
 
   private
+
   def set_user
     @user = User.includes(:cats, :photos).find(params[:id])
   end
