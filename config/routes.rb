@@ -5,5 +5,8 @@ Rails.application.routes.draw do
   root to: 'cats#index'
   resources :users, only: %i[show edit update destroy]
   resources :cats, only: %i[new create show edit update destroy]
-  resources :photos, only: %i[new create show edit update destroy]
+  resources :photos, only: %i[new create show edit update destroy] do
+    post 'add' => 'likes#create'
+    delete '/add' => 'likes#destroy'
+  end
 end
