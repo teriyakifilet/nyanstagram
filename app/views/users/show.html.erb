@@ -3,7 +3,7 @@
   <h3><%= @user.user_name %>さん</h3>
   <h4>プロフィール</h4>
   <p><%= @user.user_profile %></p>
-  <% if current_user.id == @user.id %>
+  <% if user_signed_in? && current_user.id == @user.id %>
     <%= link_to "編集する", edit_user_path(@user) %>
    <% end %>
 </div>
