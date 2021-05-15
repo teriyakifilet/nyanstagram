@@ -9,6 +9,10 @@ class User < ApplicationRecord
   has_many :cats, dependent: :destroy
   has_many :photos, dependent: :destroy
 
+  # いいね関連
+  has_many :likes, dependent: :destroy
+  has_many :liked_photos, through: :likes, source: :photo
+
   validates :user_name, presence: true, length: { minimum: 4, maximum: 32 }
   validates :user_profile, allow_blank: true, length: { maximum: 255 }
 
