@@ -7,6 +7,9 @@
     <h4><%= @photo.detail %></h4>
     <h5>投稿日時　<%= @photo.created_at %></h5>
     <h5><%= link_to @photo.user.user_name, user_path(@photo.user) %>
+    <div class="like-btn">
+      <%= render 'likes/like', photo: @photo %>
+    </div>
   </div>
   <div class="link-wrapper">
     <div class="link-title">

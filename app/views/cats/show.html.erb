@@ -28,6 +28,9 @@
               <%= image_tag photo.cat_photo, class: "cat-image"%>
             <% end %>
             <%= photo.detail%>
+            <div class="like-btn">
+              <%= render 'likes/like', photo: photo %>
+            </div>
           </div>
         <% end %>
       </div>

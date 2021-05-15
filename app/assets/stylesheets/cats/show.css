@@ -40,6 +40,10 @@
 .cat-photos {
   display: flex;
   flex-direction: row;
-  justify-items: center;
   justify-content: center;
+}
+
+.cat-photo {
+  display: flex;
+  flex-direction: column;
 }
