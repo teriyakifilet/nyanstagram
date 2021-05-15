@@ -1,0 +1,20 @@
+<%= form_with model: @user, url: user_path(@user), local: true do |f| %>
+  <%= render 'shared/error_messages', model: f.object%>
+
+  <div class="field">
+    <label class="form-text">ユーザー名</label>
+    <span class="indispensable">必須</span><br>
+    <em>（4文字以上）</em><br>
+    <%= f.text_field :user_name, autocomplete: "nickname" %>
+  </div>
+  
+  <div class="field">
+    <label class="form-text">プロフィール</label><br>
+    <%= f.text_area :user_profile, autocomplete: "profile" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "更新する" %>
+  </div>
+     <%= link_to "退会する", user_path(@user), method: :delete, data: { confirm: "本当に退会しますか？この操作は取り消せません。" } %>
+<% end %>
