@@ -11,10 +11,9 @@ class UsersController < ApplicationController
     @photos = @user.photos
   end
 
-  def edit
-  end
+  def edit; end
 
-  def update 
+  def update
     if @user.update(user_params)
       redirect_to user_path(@user)
     else
@@ -31,7 +30,7 @@ class UsersController < ApplicationController
   def set_user
     @user = User.includes(:cats, :photos).find(params[:id])
   end
-  
+
   def user_params
     params.require(:user).permit(:user_name, :user_profile)
   end
