@@ -41,6 +41,9 @@
                 <%= link_to photo_path(photo) do %>
                   <%= image_tag photo.cat_photo, class: "cat-image"%>
                 <% end %>
+                <div class="like-btn">
+                  <%= render 'likes/like', photo: photo %>
+                </div>
               </li>
           <% end %>
         </ul>
