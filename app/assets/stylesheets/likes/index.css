@@ -1,0 +1,18 @@
+.like-photos {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.like-photo {
+  display: flex;
+  flex-direction: column;
+}
+
+.like-photo-img {
+  height: 25vh;
+  width: 30vw;
+  min-height: 500px;
+  background-color: rgb(255, 255, 255);
+  object-fit: contain;
+}

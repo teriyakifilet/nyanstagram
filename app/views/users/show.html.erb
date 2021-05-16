@@ -5,7 +5,8 @@
   <p><%= @user.user_profile %></p>
   <% if user_signed_in? && current_user.id == @user.id %>
     <%= link_to "編集する", edit_user_path(@user) %>
-   <% end %>
+  <% end %>
+  <h4><%= link_to "いいねした写真", user_likes_path(@user) %></h4>
 </div>
 <div class="cat-contents">
   <% if @cats.present? %>

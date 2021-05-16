@@ -1,0 +1,22 @@
+<h3><%= @user.user_name %>さんのいいね</h3>
+<% if @user.likes.present? %>
+  <div class="like-photos">
+    <% @user.likes.each do |like| %>
+      <div class="like-photo">
+        <div class="like-photo-img">
+          <%= link_to photo_path(like.photo_id) do %>
+            <%= image_tag like.photo.cat_photo, class: "like-photo-img" %>
+          <% end %>
+        </div>
+        <div class="like-photo-detail">
+          <%= like.photo.detail %>
+        </div>
+        <div class="like-btn">
+          <%= render 'like', photo: like.photo %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <span><%= @user.user_name %>はまだいいねしていないみたいです。
+<% end %>
