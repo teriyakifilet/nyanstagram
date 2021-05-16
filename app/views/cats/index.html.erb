@@ -2,6 +2,7 @@
 <% if user_signed_in? %>
   <div>
     <p>ようこそ、<%= link_to current_user.user_name, user_path(current_user.id) %>さん
+    <%= link_to "いいねした写真", user_likes_path(current_user) %>
     <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
   </div>
   <div>
