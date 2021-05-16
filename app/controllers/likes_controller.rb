@@ -5,6 +5,7 @@ class LikesController < ApplicationController
   before_action :set_like, except: [:index]
 
   def index
+    @user = User.includes(:likes).find(params[:user_id])
   end
 
   def create
