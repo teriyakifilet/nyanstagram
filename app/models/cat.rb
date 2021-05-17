@@ -24,4 +24,7 @@ class Cat < ApplicationRecord
   has_many :relationships
   has_many :followers, through: :relationships, source: :user
 
+  def followed_by?(user)
+    relationships.where(user_id: user.id).exists?
+  end
 end

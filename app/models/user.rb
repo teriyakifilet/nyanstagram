@@ -24,19 +24,4 @@ class User < ApplicationRecord
   has_many :relationships
   has_many :following, through: :relationships, source: :cat
 
-  def follow(user)
-    unless self == user
-      self.relationships.find_or_create_by(follow_id: user.id)
-    end
-  end
-
-  def unfollow(user)
-    relationship = self.relationships.find_by(follow_id: user.id)
-    relationship.destroy if relationship
-  end
-
-  def following?(user)
-    self.followings.include?(user)
-  end
-
 end
