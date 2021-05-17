@@ -19,4 +19,12 @@ class Cat < ApplicationRecord
   end
 
   validates :cat_age, numericality: { only_integer: true }, allow_blank: true
+
+  # フォロー関連
+  has_many :relationships
+  has_many :followers, through: :relationships, source: :user
+
+  def followed_by?(user)
+    relationships.where(user_id: user.id).exists?
+  end
 end
