@@ -6,6 +6,7 @@
     <div class="cat-information-detail">
       <ul class="cat-information-list">
         <li><h2><%= @cat.cat_name%>ちゃん</h3>
+        <li><%= render 'relationships/follow', cat: @cat %>
         <li><%= link_to "#{@cat.user.user_name}さん", user_path(@cat.user) %>ちのねこちゃんです
         <li>品種 <%= @cat.cat_breed.name %>
         <li>性別 <%= @cat.cat_sex.name %>

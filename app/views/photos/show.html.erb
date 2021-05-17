@@ -20,6 +20,7 @@
        <div class="link-cat">
         <%= link_to cat.cat_name, cat_path(cat) %>
         <%= image_tag cat.icon, class: "icon-image" %>
+        <%= render 'relationships/follow', cat: cat %>
        </div> 
       <% end %>
     </div>
