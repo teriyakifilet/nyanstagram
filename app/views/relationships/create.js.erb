@@ -1,0 +1,1 @@
+$('#follow-button-<%= @cat.id %>').html("<%= escape_javascript(render partial: "relationships/follow", locals: { cat: @cat }) %>");
