@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   root to: 'cats#index'
   resources :users, only: %i[show edit update destroy] do
     resources :likes, only: [:index]
+    get 'following', to: 'relationships#index'
   end
   resources :cats, only: %i[new create show edit update destroy] do
   # フォロー関連
