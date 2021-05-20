@@ -1,1 +1,24 @@
-<h3>フォロー一覧仮ページ</h3>
+<div class="contents-wrapper">
+  <h3><%= link_to "#{@user.user_name}さん", user_path(@user) %>がフォローしているねこちゃん </h3>
+  <% if @user.following.exists? %>
+    <div class="following-wrapper">
+      <% @user.following.each do |following| %>
+        <div class="cat-information-wrapper">
+          <div class="cat-information-icon">
+            <%= link_to cat_path(following) do %>
+              <%= image_tag following.icon, class: "cat-icon" %>
+            <% end %>
+          </div>
+          <div class="cat-information-detail">
+            <ul class="cat-information-list">
+              <li><h3><%= following.cat_name%>ちゃん</h3>
+              <li><%= render 'relationships/follow', cat: following %>
+            </ul>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else%>
+    <%= @user.user_name %>さんはまだどのねこちゃんもフォローしていないみたいです。
+  <% end %>
+<div>
