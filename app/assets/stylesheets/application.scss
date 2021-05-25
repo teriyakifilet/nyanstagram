@@ -13,3 +13,77 @@
  *= require_tree .
  *= require_self
  */
+
+ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
+ @import '@fortawesome/fontawesome-free/scss/fontawesome';
+ @import '@fortawesome/fontawesome-free/scss/solid';
+ @import '@fortawesome/fontawesome-free/scss/regular';
+ @import '@fortawesome/fontawesome-free/scss/brands';
+ @import '@fortawesome/fontawesome-free/scss/v4-shims';
+
+/*全体*/
+a {
+  text-decoration: none !important;
+  color: #ff8fa3 !important;
+}
+
+a:hover {
+  color: #ffb3c1 !important;
+}
+
+.like-btn, .follow-btn {
+  color: #ff8fa3;
+}
+
+/*ナビゲーションバー*/
+.navbar-light .navbar-toggler {
+  border-color: rgba(0, 0, 0, 0) !important;
+  outline: none;
+}
+.navbar-brand-link {
+  color: #ff8fa3;
+}
+
+/*body*/
+body {
+   padding-top: 70px;
+ }
+
+ul {
+  list-style: none;
+ }
+
+.rounded-circle {
+ object-fit: cover;
+}
+
+/*ページネーション*/
+.page-item {
+}
+
+.page-link {
+  display: inline-block !important;
+  margin: 2px !important;
+  border: white !important;
+  height: 30px !important;
+  width: 30px !important;
+  padding: 5px !important;
+  border-radius: 10%;
+  text-align: center !important;
+}
+
+.page-item>a.page-link {
+  background-color: white !important;
+  color: #ff8fa3 !important;
+  border-color: white !important;
+}
+
+.page-item>a.page-link:hover {
+  border: 1px solid !important;
+  border-color: #ff8fa3 !important;
+}
+
+.page-item.active>a.page-link {
+  background-color: #ff8fa3 !important;
+  color: white !important;
+}
