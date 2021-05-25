@@ -36,13 +36,38 @@ a:hover {
 }
 
 /*ナビゲーションバー*/
+.navbar-light.bg-light {
+  background-color: #ff8fa3 !important;
+}
+
 .navbar-light .navbar-toggler {
   border-color: rgba(0, 0, 0, 0) !important;
   outline: none;
 }
-.navbar-brand-link {
-  color: #ff8fa3;
+
+.navbar-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E") !important;
 }
+
+.navbar-brand {
+  font-size: 2rem !important;
+}
+
+a.navbar-brand-link {
+  font-family: 'Pacifico', cursive;
+  color: white !important;
+}
+a.navbar-brand-link:hover {
+  color: black !important;
+}
+
+a.nav-link {
+  color: white !important;
+}
+a.nav-link:hover {
+  color: black !important;
+}
+
 
 /*body*/
 body {
