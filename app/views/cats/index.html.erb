@@ -1,37 +1,89 @@
-<h1>nyanstagram</h1>
-<% if user_signed_in? %>
-  <div>
-    <p>ようこそ、<%= link_to current_user.user_name, user_path(current_user.id) %>さん
-    <%= link_to "いいねした写真", user_likes_path(current_user) %>
-    <%= link_to "フォローしているねこちゃん", user_following_path(current_user) %>
-    <br>
-    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-  </div>
-  <div>
-    <%= link_to "新規ねこちゃん", new_cat_path %>
-    <%= link_to "新規写真投稿", new_photo_path %>
-  </div>
-<% else %>
-  <div>
-    <%= link_to "ログイン", new_user_session_path %>
-    <%= link_to "新規登録", new_user_registration_path %>
+<!--新着写真（フォロー）-->
+<% if @following_cats.present? %>
+  <div class="container mt-5">
+    <div class="row mt-5 pt-4 mb-5 d-inline">
+      <h4 class="text-center">FOLLOWING'S NEW PHOTOS</h4>
+    </div>
+    <% if @following_cats_photos.present? %>
+      <div class="row d-flex justify-content-around">
+        <% @following_cats_photos.each do |photo| %>
+          <div class="col-sm-4 mb-3">
+              <div class="card border-0">
+                <%= link_to photo_path(photo) do %>
+                  <%= image_tag photo.cat_photo, class: "card-img-top" %>
+                <% end %>
+                <div class="d-flex flex-row   justify-content-between p-2">
+                  <h6 class="card-title"><%= photo.detail %></h6>
+                  <div class="like-btn card-text">
+                    <%= render 'likes/like', photo: photo %>
+                  </div>
+                </div>
+              </div>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="text-center">
+        <p>フォローしているねこちゃんはまだ写真が投稿されていないみたいです。</p>
+      </div>
+    <% end %>
   </div>
 <% end %>
-<div>
-  <ul class="new-photo-list">
-    <h3>新着ねこちゃん写真</h3>
+
+<!--新着写真-->
+<div class="container mt-5">
+  <div class="row mt-5 pt-4 mb-5 d-inline">
+    <h4 class="text-center"> NEW PHOTOS</h4>
+  </div>
+  <div class="row d-flex justify-content-around">
     <% if @photos.present? %>
       <% @photos.each do |photo| %>
-        <li class="new-photo-column">
-          <%= link_to photo_path(photo) do %>
-            <%= image_tag photo.cat_photo, class: "cat-photo" %>
-          <% end %>
-        <li class="like-btn">
-          <%= render 'likes/like', photo: photo %>
+        <div class="col-sm-4 mb-3">
+            <div class="card border-0">
+              <%= link_to photo_path(photo) do %>
+                <%= image_tag photo.cat_photo, class: "card-img-top" %>
+              <% end %>
+              <div class="d-flex flex-row justify-content-between p-2">
+                <h6 class="card-title"><%= photo.detail %></h6>
+                <div class="like-btn card-text">
+                  <%= render 'likes/like', photo: photo %>
+                </div>
+              </div>
+            </div>
+        </div>
       <% end %>
     <% else %>
       まだ誰もねこちゃん写真を投稿していないようです。
-      <%= link_to "ねこちゃん写真を投稿する", new_photo_path %>
+      <% if user_signed_in? %>
+        <% if current_user.cats.exists? %>
+          <%= link_to "ねこちゃん写真を投稿する", new_photo_path %>
+        <% else %>
+          <%= link_to "新しくねこちゃんを登録する", new_cat_path %>
+        <% end %>
+      <% end %>
     <% end %>
-  </ul>
+  </div>
+</div>
+<!--新着ねこちゃん-->
+<div class="container mt-5">
+  <div class="row mt-5 pt-4 d-inline">
+    <h4 class="text-center">NEW CATS</h4>
+  </div>
+  <div class="row d-flex justify-content-around">
+    <% if @cats.present? %>
+      <% @cats.each do |cat| %>
+        <div class="col-sm-4 justify-items-center text-center">
+          <%= link_to cat_path(cat) do %>
+            <%= image_tag cat.icon, class: "rounded-circle", size: "140x140" %>
+          <% end %>
+          <div class="d-flex flex-row justify-content-center align-items-center p-4">
+            <h6 ><%= cat.cat_name %>ちゃん</h6>
+            <h6 class="follow-btn pl-1">
+              <%= render 'relationships/follow', cat: cat%>
+            </h6>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 </div>
