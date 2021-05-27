@@ -1,24 +1,29 @@
-<div class="contents-wrapper">
-  <h3><%= link_to "#{@user.user_name}さん", user_path(@user) %>がフォローしているねこちゃん </h3>
-  <% if @user.following.exists? %>
-    <div class="following-wrapper">
-      <% @user.following.each do |following| %>
-        <div class="cat-information-wrapper">
-          <div class="cat-information-icon">
-            <%= link_to cat_path(following) do %>
-              <%= image_tag following.icon, class: "cat-icon" %>
-            <% end %>
-          </div>
-          <div class="cat-information-detail">
-            <ul class="cat-information-list">
-              <li><h3><%= following.cat_name%>ちゃん</h3>
-              <li><%= render 'relationships/follow', cat: following %>
-            </ul>
+<div class="container mt-5">
+  <div class="row mt-5 pt-4 mb-5 d-inline">
+    <h4 class="text-center"><%= link_to @user.user_name, user_path(@user) %>'S FOLLOWING</h4>
+  </div>
+  <% if @following.present? %>
+   <div class="row d-flex justify-content-around">
+      <% @following.each do |cat| %>
+        <div class="col-sm-4 justify-items-center text-center">
+          <%= link_to cat_path(cat) do %>
+            <%= image_tag cat.icon, class: "rounded-circle", size: "140x140" %>
+          <% end %>
+          <div class="d-flex flex-row justify-content-center align-items-center p-4">
+            <h6 ><%= cat.cat_name %>ちゃん</h6>
+            <h6 class="follow-btn pl-1">
+              <%= render 'relationships/follow', cat: cat%>
+            </h6>
           </div>
         </div>
       <% end %>
     </div>
-  <% else%>
-    <%= @user.user_name %>さんはまだどのねこちゃんもフォローしていないみたいです。
+    <div class="col p-3 m-3 d-flex justify-content-center">
+      <%= paginate @following %>
+    </div>
+  <% else %>
+    <div class="text-center">
+      <p><%= @user.user_name %>さんはまだねこちゃんをフォローしていないみたいです。</p>
+    </div>
   <% end %>
-<div>
+</div>
