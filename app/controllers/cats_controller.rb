@@ -22,7 +22,7 @@ class CatsController < ApplicationController
   def create
     @cat = Cat.new(cat_params)
     if @cat.save
-      redirect_to root_path
+      redirect_to cat_path(@cat)
     else render :new
     end
   end
@@ -41,8 +41,9 @@ class CatsController < ApplicationController
   end
 
   def destroy
+    @user = @cat.user
     @cat.destroy
-    redirect_to root_path
+    redirect_to user_path(@user)
   end
 
   private
