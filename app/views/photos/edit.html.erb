@@ -1,22 +1,32 @@
 <%= form_with model: @photo, url: photo_path(@photo), local: true do |f| %>
-  <%= render 'shared/error_messages', model: f.object%>
-  <div>ねこちゃん写真情報編集</div>
-  <div>
-    <%= image_tag @photo.cat_photo, class: "photo-image" %>
-  <div>
-    コメント
-    <%= f.text_area :detail, placeholder: "コメント（255文字以内）" , maxlength:"255" %>
-  </div>
-  <div>
-    うつっているねこちゃん
-      <%= f.collection_check_boxes(:cat_ids, current_user.cats.all, :id, :cat_name) do |b| %>
-        <%= b.label { b.check_box + b.text } %>
-      <% end %>
-  </div>
-  <div>
-    <%= f.submit "更新する" %>
-  </div>
-  <div>
-    <%= link_to "削除する", photo_path(@photo), method: :delete, data: { confirm: "本当に削除しますか？この操作は取り消せません。" } %>
+  <div class="container mt-5">
+    <%= render 'shared/error_messages', model: f.object%>
+    <div class="row">
+      <div class="col">
+        <h4 class="text-center">ねこちゃん写真情報編集</h4>
+      </div>
+    </div>
+    <div class="row mt-5 justify-content-center">
+      <%= image_tag @photo.cat_photo, class: "photo-image mb-3" %>
+      <div class="col-sm-6 text-center">
+        <div class="form-group">
+          <label for="photo_detail">コメント</label>
+          <span class="form-text text-muted">（255文字以内）</span>
+          <%= f.text_area :detail, maxlength:"255", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <label for="photo_cat_id">うつっているねこちゃん</label>
+          <%= f.collection_check_boxes(:cat_ids, current_user.cats.all, :id, :cat_name) do |b| %>
+            <%= b.label class: "form-control mt-3" do %>
+              <%= b.check_box + b.text %>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="form-group mt-5">
+          <%= f.submit "登録する", class: "btn btn-primary mr-4" %>
+          <%= link_to "削除する", photo_path(@photo), method: :delete, data: { confirm: "本当に削除しますか？この操作は取り消せません。" }, class: "btn btn-dark" %>
+        </div>
+      </div>
+    </div>
   </div>
 <% end%>
