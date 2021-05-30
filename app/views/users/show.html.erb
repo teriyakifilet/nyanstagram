@@ -7,7 +7,7 @@
         <li><h5 class="p-3 text-wrap text-break"><%= @user.user_profile %></h5><li>
         <li>
           <% if user_signed_in? && current_user.id == @user.id %>
-            <span><%= link_to "編集する", edit_user_path(@user) %></span>
+            <span class="btn btn-primary"><%= link_to "編集する", edit_user_path(@user) %></span>
           <% end %>
         </li>
       </ul>

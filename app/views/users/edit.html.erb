@@ -1,20 +1,24 @@
 <%= form_with model: @user, url: user_path(@user), local: true do |f| %>
-  <%= render 'shared/error_messages', model: f.object%>
-
-  <div class="field">
-    <label class="form-text">ユーザー名</label>
-    <span class="indispensable">必須</span><br>
-    <em>（4文字以上）</em><br>
-    <%= f.text_field :user_name, autocomplete: "nickname" %>
-  </div>
-  
-  <div class="field">
-    <label class="form-text">プロフィール</label><br>
-    <%= f.text_area :user_profile, autocomplete: "profile" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "更新する" %>
-  </div>
-     <%= link_to "退会する", user_path(@user), method: :delete, data: { confirm: "本当に退会しますか？この操作は取り消せません。" } %>
-<% end %>
+  <div class="container mt-5">
+    <%= render 'shared/error_messages', model: f.object%>
+    <div class="row">
+      <div class="col">
+        <h4 class="text-center">ユーザー情報編集</h4>
+      </div>
+    </div>
+    <div class="row mt-5 justify-content-center">
+      <div class="col-sm-6 center-block text-center">
+        <div class="field form-group">
+          <label for="user_user_name">ユーザー名</label>
+          <span class="form-text text-muted">（4文字以上）</span>
+          <%= f.text_field :user_name, autocomplete: "nickname", class: "form-control" %>
+        </div>
+        <div class="field form-group">
+          <label for="user_user_profile">プロフィール</label>
+          <%= f.text_area :user_profile, autocomplete: "profile", class: "form-control" %>
+        </div>
+        <div class="actions form-group mt-5">
+          <%= f.submit "更新する", class: "btn btn-primary mr-4" %>
+          <%= link_to "退会する", user_path(@user), method: :delete, data: { confirm: "本当に退会しますか？この操作は取り消せません。" }, class: "btn btn-dark" %>
+        </div>
+     <% end %>
