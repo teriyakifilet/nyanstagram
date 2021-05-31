@@ -6,7 +6,7 @@
     <div class="col-sm-4 text-right">
       <ul>
         <li><h4><%= @photo.detail %></h4></li>
-        <li><h5><%= @photo.created_at %></h5></li>
+        <li><h5><%= @photo.created_at.to_s(:datetime_jp) %></h5></li>
         <li><h5><%= render 'likes/like', photo: @photo %><%= link_to @photo.user.user_name, user_path(@photo.user), class: "ml-3" %></li>
         <% if user_signed_in? && current_user == @photo.user %>
           <li><span class="btn btn-primary mt-2"><%= link_to "編集する", edit_photo_path(@photo) %></li>
