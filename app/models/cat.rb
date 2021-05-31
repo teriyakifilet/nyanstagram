@@ -10,13 +10,12 @@ class Cat < ApplicationRecord
   belongs_to :cat_sex
   belongs_to :cat_breed
 
-  with_options numericality: { other_than: 1 } do
+  with_options numericality: { other_than: 1, message: 'を選んでください' } do
     validates :cat_sex_id, :cat_breed_id
   end
 
-  with_options presence: true do
-    validates :cat_name, :icon
-  end
+  validates :cat_name, presence: true
+  validates :icon, presence: { message: 'を選んでください' }
 
   validates :cat_age, numericality: { only_integer: true }, allow_blank: true
 

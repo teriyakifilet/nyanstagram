@@ -1,0 +1,128 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
+ @import '@fortawesome/fontawesome-free/scss/fontawesome';
+ @import '@fortawesome/fontawesome-free/scss/solid';
+ @import '@fortawesome/fontawesome-free/scss/regular';
+ @import '@fortawesome/fontawesome-free/scss/brands';
+ @import '@fortawesome/fontawesome-free/scss/v4-shims';
+
+/*全体*/
+
+.field_with_errors {
+  display: contents;
+}
+
+a {
+  text-decoration: none !important;
+  color: #ff8fa3 !important;
+}
+
+a:hover {
+  color: #ffb3c1 !important;
+}
+
+.like-btn, .follow-btn {
+  color: #ff8fa3;
+}
+
+.btn-primary {
+  background-color: #ff8fa3 !important;
+  border-color: #ff8fa3 !important;
+}
+
+.btn-primary>a {
+  color: white !important;
+}
+
+/*ナビゲーションバー*/
+.navbar-light.bg-light {
+  background-color: #ff8fa3 !important;
+}
+
+.navbar-light .navbar-toggler {
+  border-color: rgba(0, 0, 0, 0) !important;
+  outline: none;
+}
+
+.navbar-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E") !important;
+}
+
+.navbar-brand {
+  font-size: 2rem !important;
+}
+
+a.navbar-brand-link {
+  font-family: 'Pacifico', cursive;
+  color: white !important;
+}
+a.navbar-brand-link:hover {
+  color: black !important;
+}
+
+a.nav-link {
+  color: white !important;
+}
+a.nav-link:hover {
+  color: black !important;
+}
+
+
+/*body*/
+body {
+   padding-top: 70px;
+ }
+
+ul {
+  list-style: none;
+ }
+
+.rounded-circle {
+ object-fit: cover;
+}
+
+/*ページネーション*/
+.page-item {
+}
+
+.page-link {
+  display: inline-block !important;
+  margin: 2px !important;
+  border: white !important;
+  height: 30px !important;
+  width: 30px !important;
+  padding: 5px !important;
+  border-radius: 10%;
+  text-align: center !important;
+}
+
+.page-item>a.page-link {
+  background-color: white !important;
+  color: #ff8fa3 !important;
+  border-color: white !important;
+}
+
+.page-item>a.page-link:hover {
+  border: 1px solid !important;
+  border-color: #ff8fa3 !important;
+}
+
+.page-item.active>a.page-link {
+  background-color: #ff8fa3 !important;
+  color: white !important;
+}

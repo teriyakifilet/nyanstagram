@@ -63,5 +63,7 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'active_hash'
 gem 'devise'
 gem 'image_processing'
-gem 'mini_magick'
 gem 'jquery-rails'
+gem 'kaminari'
+gem 'mini_magick'
+gem 'rails-i18n'

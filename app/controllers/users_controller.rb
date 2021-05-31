@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def show
     @cats = @user.cats
-    @photos = @user.photos
+    @photos = @user.photos.page(params[:page]).per(6)
   end
 
   def edit; end
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
   private
 
   def set_user
-    @user = User.includes(:cats, :photos).find(params[:id])
+    @user = User.includes(:cats, :photos, :following).find(params[:id])
   end
 
   def user_params

@@ -1,11 +1,11 @@
 class LikesController < ApplicationController
-
   before_action :authenticate_user!, except: [:index]
   before_action :set_photo, except: [:index]
   before_action :set_like, except: [:index]
 
   def index
     @user = User.includes(:likes).find(params[:user_id])
+    @likes = @user.likes.includes(:photo).page(params[:page]).per(6)
   end
 
   def create

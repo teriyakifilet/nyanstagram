@@ -1,22 +1,33 @@
-<h3><%= @user.user_name %>さんのいいね</h3>
-<% if @user.likes.present? %>
-  <div class="like-photos">
-    <% @user.likes.each do |like| %>
-      <div class="like-photo">
-        <div class="like-photo-img">
-          <%= link_to photo_path(like.photo_id) do %>
-            <%= image_tag like.photo.cat_photo, class: "like-photo-img" %>
-          <% end %>
-        </div>
-        <div class="like-photo-detail">
-          <%= like.photo.detail %>
-        </div>
-        <div class="like-btn">
-          <%= render 'like', photo: like.photo %>
-        </div>
+  <div class="container mt-5">
+    <div class="row mt-5 pt-4 mb-5 d-inline">
+      <h4 class="text-center"><%= link_to @user.user_name, user_path(@user) %>'S LIKES</h4>
+    </div>
+    <% if @likes.present? %>
+      <div class="row d-flex justify-content-around">
+        <% @likes.each do |like| %>
+          <div class="col-sm-4 mb-3">
+              <div class="card border-0">
+                <%= link_to photo_path(like.photo) do %>
+                  <%= image_tag like.photo.cat_photo, class: "card-img-top" %>
+                <% end %>
+                <div class="d-flex flex-row   justify-content-between p-2">
+                  <h6 class="card-title"><%= like.photo.detail %></h6>
+                  <div class="like-btn card-text">
+                    <%= render 'likes/like', photo: like.photo %>
+                  </div>
+                </div>
+              </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="row">
+      <div class="col p-3 m-3 d-flex justify-content-center">
+        <%= paginate @likes %>
+      </div>
+    </div>
+    <% else %>
+      <div class="text-center">
+        <p><%= @user.user_name %>さんはまだ何もいいねしていないみたいです。</p>
       </div>
     <% end %>
   </div>
-<% else %>
-  <span><%= @user.user_name %>はまだいいねしていないみたいです。
-<% end %>

@@ -10,7 +10,7 @@ class PhotosController < ApplicationController
   def create
     @photo = Photo.new(photo_params)
     if @photo.save
-      redirect_to root_path
+      redirect_to photo_path(@photo)
     else render :new
     end
   end
@@ -28,8 +28,9 @@ class PhotosController < ApplicationController
   end
 
   def destroy
+    @user = @photo.user
     @photo.destroy
-    redirect_to root_path
+    redirect_to user_path(@user)
   end
 
   private

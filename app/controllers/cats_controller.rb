@@ -6,7 +6,13 @@ class CatsController < ApplicationController
   before_action :user_id_verification, only: %i[edit update destroy]
 
   def index
-    @photos = Photo.includes(:cats).order('created_at DESC').limit(5)
+    @photos = Photo.includes(:cats).order('created_at DESC').limit(6)
+    @cats = Cat.order('created_at DESC').limit(6)
+    if user_signed_in? && current_user.following.present?
+      @user = User.includes(:following).find(current_user.id)
+      @following_cats = @user.following.ids
+      @following_cats_photos = Photo.where(cats: @following_cats).order('created_at DESC').limit(6)
+    end
   end
 
   def new
@@ -16,13 +22,13 @@ class CatsController < ApplicationController
   def create
     @cat = Cat.new(cat_params)
     if @cat.save
-      redirect_to root_path
+      redirect_to cat_path(@cat)
     else render :new
     end
   end
 
   def show
-    @photos = @cat.photos
+    @photos = @cat.photos.order('created_at DESC').page(params[:page]).per(9)
   end
 
   def edit; end
@@ -35,8 +41,9 @@ class CatsController < ApplicationController
   end
 
   def destroy
+    @user = @cat.user
     @cat.destroy
-    redirect_to root_path
+    redirect_to user_path(@user)
   end
 
   private

@@ -1,45 +1,66 @@
-<div class="contents-wrapper">
-  <div class="cat-information-wrapper">
-    <div class="cat-information-icon">
-      <%= image_tag @cat.icon, class: "cat-icon" %>
-    </div>
-    <div class="cat-information-detail">
-      <ul class="cat-information-list">
-        <li><h2><%= @cat.cat_name%>ちゃん</h3>
-        <li><%= render 'relationships/follow', cat: @cat %>
-        <li><%= link_to "#{@cat.user.user_name}さん", user_path(@cat.user) %>ちのねこちゃんです
-        <li>品種 <%= @cat.cat_breed.name %>
-        <li>性別 <%= @cat.cat_sex.name %>
-        <li>年齢 <%= @cat.cat_age %>さい
-        <% if user_signed_in? && current_user.id == @cat.user_id%>
-          <li><h4><%= link_to "編集する", edit_cat_path(@cat) %></h4>
-        <% end %>
-      </ul>
-    </div>
-  </div>
-  <div class="cat-photos-wrapper">
-    <div class="cat-photos-title">
-      <h3><%= @cat.cat_name %>ちゃんのお写真</h3>
-    </div>
-    <% if @photos.present? %>
-      <div class="cat-photos">
-        <% @photos.each do |photo| %>
-          <div class="cat-photo">
-            <%= link_to photo_path(photo) do %>
-              <%= image_tag photo.cat_photo, class: "cat-image"%>
-            <% end %>
-            <%= photo.detail%>
-            <div class="like-btn">
-              <%= render 'likes/like', photo: photo %>
-            </div>
-          </div>
-        <% end %>
+<div class="container mt-5">
+  <div class="row d-flex flex-row align-items-start justify-content-between">
+    <div class="col-sm-4 block-center">
+      <div class="d-flex flex-row justify-content-center align-items-center">
+        <h2 class="m-3"><%= @cat.cat_name%></h2>
+        <%= render 'relationships/follow', cat: @cat %>
       </div>
-    <% else %>
-      まだお写真が投稿されていないようです。
-      <% if @cat.user_id == current_user.id %>
-        <%= link_to "写真を投稿する", new_photo_path %>
+      <div class="text-center">
+        <%= image_tag @cat.icon, class: "rounded-circle", size: "140x140" %>
+      </div>
+      <div>
+        <ul class="mt-4">
+          <li><%= link_to "#{@cat.user.user_name}さん", user_path(@cat.user) %>ちのねこちゃん
+          <li>品種 <%= @cat.cat_breed.name %>
+          <li>性別 <%= @cat.cat_sex.name %>
+          <% if @cat.cat_age.present? %>
+            <li>年齢 <%= @cat.cat_age %>さい
+          <% end %>
+          <% if user_signed_in? && current_user.id == @cat.user_id%>
+            <li><span class="btn btn-primary mt-3"><%= link_to "編集する", edit_cat_path(@cat) %></span>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <div class="col-sm-8 block-center">
+      <div class="row">
+        <div class="col">
+          <h4 class="text-center m-4">PHOTOS</h4>
+        </div>
+      </div>
+      <% if @photos.present? %>
+        <div class="row d-flex flex-row ">
+          <% @photos.each do |photo| %>
+            <div class="col-sm-4 mb-3">
+              <div class="card border-0">
+                <%= link_to photo_path(photo) do %>
+                  <%= image_tag photo.cat_photo, class: "card-img-top" %>
+                <% end %>
+                <div class="d-flex flex-row   justify-content-between p-2">
+                  <h6 class="card-title"><%= photo.detail %></h6>
+                  <div class="like-btn card-text">
+                    <%= render 'likes/like', photo: photo %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <div class="row">
+          <div class="col p-3 m-3 d-flex justify-content-center">
+            <%= paginate @photos %>
+          </div>
+        </div>
+      <% else %>
+        <div class="row">
+          <div class="col text-center">
+            <span>まだ何も投稿されていないようです。</span>
+            <% if user_signed_in? && @cat.user_id == current_user.id %><br>
+              <span class="btn btn-primary mt-3"><%= link_to "写真を投稿する", new_photo_path %></span>
+            <% end %>
+        </div>
       <% end %>
-    <% end %>
+    </div>
   </div>
 </div>
+

@@ -1,11 +1,11 @@
 class RelationshipsController < ApplicationController
-
   before_action :authenticate_user!, except: [:index]
   before_action :set_cat, except: [:index]
   before_action :set_follow, except: [:index]
 
   def index
     @user = User.includes(:following).find(params[:user_id])
+    @following = @user.following.page(params[:page]).per(9)
   end
 
   def create

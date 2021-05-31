@@ -1,13 +1,15 @@
 <% if user_signed_in? %>
   <% if cat.followed_by?(current_user) %>
     <%= link_to(cat_follow_path(cat), method: :delete, remote: true, id: :"follow-button-#{cat.id}") do %>
-      <i class="fa-lg fas fa-heart icon-btn liked"></i>
-        フォロー解除
+      <i class="fa-lg fas fa-star follow-btn"></i>
     <% end %>
   <% else %>
     <%= link_to(cat_follow_path(cat), method: :post, remote: true, id: :"follow-button-#{cat.id}") do %>
-      <i class="fa-lg fas fa-heart icon-btn not-like"></i>
-        フォローする
+      <i class="fa-lg far fa-star follow-btn"></i>
     <% end %>
+  <% end %>
+<% else %>
+  <%= link_to new_user_session_path do %>
+    <i class="fa-lg far fa-star follow-btn"></i>
   <% end %>
 <% end %>
