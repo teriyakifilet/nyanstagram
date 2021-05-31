@@ -1,0 +1,14 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        user_name: ユーザー名
+        user_profile: プロフィール
+      photo:
+        cat_ids: うつっているねこちゃん
+        cat_photo: ねこちゃんのお写真
+      cat:
+        cat_sex_id: ねこちゃんの性別
+        cat_breed_id: ねこちゃんの品種
+        cat_name: ねこちゃんのお名前
+        icon: ねこちゃんのお写真

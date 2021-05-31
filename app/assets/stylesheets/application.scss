@@ -22,6 +22,11 @@
  @import '@fortawesome/fontawesome-free/scss/v4-shims';
 
 /*全体*/
+
+.field_with_errors {
+  display: contents;
+}
+
 a {
   text-decoration: none !important;
   color: #ff8fa3 !important;
