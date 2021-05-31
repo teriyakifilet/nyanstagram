@@ -1,5 +1,4 @@
 class LikesController < ApplicationController
-
   before_action :authenticate_user!, except: [:index]
   before_action :set_photo, except: [:index]
   before_action :set_like, except: [:index]
