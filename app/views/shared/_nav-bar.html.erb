@@ -2,11 +2,11 @@
   <div class="navbar-brand">
     <%= link_to "Nekostagram", root_path, class: "navbar-brand-link" %>
   </div>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-    <ul class="navbar-nav">
+  <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+    <ul class="navbar-nav text-center">
         <% if user_signed_in? %>
           <li class="nav-item"><%= link_to "MY PAGE", user_path(current_user.id), class: "nav-link" %></li>
           <li class="nav-item"><%= link_to "LIKES", user_likes_path(current_user), class: "nav-link" %></li>
