@@ -49,6 +49,14 @@ a:hover {
   color: white !important;
 }
 
+.badge-danger {
+  background-color: #DD3444;
+}
+
+.badge-secondary {
+  background-color: #6C757D;
+}
+
 /*ナビゲーションバー*/
 .navbar-light.bg-light {
   background-color: #ff8fa3 !important;
@@ -97,9 +105,6 @@ ul {
 }
 
 /*ページネーション*/
-.page-item {
-}
-
 .page-link {
   display: inline-block !important;
   margin: 2px !important;
