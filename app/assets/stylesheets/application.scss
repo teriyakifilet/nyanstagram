@@ -49,6 +49,15 @@ a:hover {
   color: white !important;
 }
 
+.btn-outline-primary {
+  background-color: white !important;
+  border: solid 4px #ff8fa3 !important;
+}
+
+.btn-outline-primary>a {
+  color: #000 !important;
+}
+
 .badge-danger {
   background-color: #DD3444;
 }
