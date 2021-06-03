@@ -60,6 +60,7 @@ a:hover {
 /*ナビゲーションバー*/
 .navbar-light.bg-light {
   background-color: #ff8fa3 !important;
+  border-bottom: 4px solid black !important;
 }
 
 .navbar-light .navbar-toggler {
@@ -68,7 +69,7 @@ a:hover {
 }
 
 .navbar-toggler .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E") !important;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0,0,0,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E") !important;
 }
 
 .navbar-brand {
@@ -77,17 +78,18 @@ a:hover {
 
 a.navbar-brand-link {
   font-family: 'Pacifico', cursive;
-  color: white !important;
+  color: #000 !important;
 }
 a.navbar-brand-link:hover {
-  color: black !important;
+  color: white !important;
 }
 
 a.nav-link {
-  color: white !important;
+  color: #000 !important;
 }
+
 a.nav-link:hover {
-  color: black !important;
+  color: white !important;
 }
 
 
@@ -102,6 +104,22 @@ ul {
 
 .rounded-circle {
  object-fit: cover;
+}
+
+h2 {
+  position: relative;
+  padding: 1rem 2rem calc(1rem + 10px);
+  background: #ffb3c1;
+}
+
+h2:before {
+  position: absolute;
+  top: -7px;
+  left: -7px;
+  width: 100%;
+  height: 100%;
+  content: '';
+  border: 4px solid #000;
 }
 
 /*ページネーション*/
