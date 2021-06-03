@@ -6,7 +6,7 @@ class CatsController < ApplicationController
   before_action :user_id_verification, only: %i[edit update destroy]
 
   def index
-    @photos = Photo.includes(:cats).order('created_at DESC').limit(6)
+    @photos = Photo.includes(:cats).order('created_at DESC').limit(24)
     @cats = Cat.order('created_at DESC').limit(6)
     if user_signed_in? && current_user.following.present?
       @user = User.includes(:following).find(current_user.id)
