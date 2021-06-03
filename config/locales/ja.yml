@@ -12,3 +12,11 @@ ja:
         cat_breed_id: ねこちゃんの品種
         cat_name: ねこちゃんのお名前
         icon: ねこちゃんのお写真
+
+ja:
+  views:
+    pagination:
+      first: "<<"
+      last: ">>"
+      previous: "<"
+      next: ">"
