@@ -3,28 +3,34 @@
     <%= render 'shared/error_messages', model: f.object%>
     <div class="row">
       <div class="col">
-        <h4 class="text-center">ねこちゃん写真情報編集</h4>
+        <h2 class="text-center">EDIT POST</h2>
       </div>
     </div>
     <div class="row mt-5 justify-content-center">
-      <%= image_tag @photo.cat_photo, class: "photo-image mb-3" %>
-      <div class="col-sm-6 text-center">
-        <div class="form-group">
-          <label for="photo_detail">コメント</label>
+      <div class="col col-12 col-sm-12 col-lg-8">
+        <%= image_tag @photo.cat_photo, class: "img-fluid mb-3" %>
+      </div>
+      <div class="col col-12 col-sm-12 col-lg-6 text-center">
+        <div class="form-group mt-3 mb-4">
+          <label for="photo_detail"><h4>コメント</h4></label><br>
           <span class="form-text text-muted">（255文字以内）</span>
           <%= f.text_area :detail, maxlength:"255", class: "form-control" %>
         </div>
-        <div class="form-group">
-          <label for="photo_cat_id">うつっているねこちゃん</label>
+        <div class="form-group mb-4">
+          <label for="photo_cat_id"><h4>うつっているねこちゃん</h4></label><span class="badge badge-danger">必須</span><br>
           <%= f.collection_check_boxes(:cat_ids, current_user.cats.all, :id, :cat_name) do |b| %>
             <%= b.label class: "form-control mt-3" do %>
               <%= b.check_box + b.text %>
             <% end %>
           <% end %>
         </div>
-        <div class="form-group mt-5">
-          <%= f.submit "登録する", class: "btn btn-primary mr-4" %>
-          <%= link_to "削除する", photo_path(@photo), method: :delete, data: { confirm: "本当に削除しますか？この操作は取り消せません。" }, class: "btn btn-dark" %>
+        <div class="form-group mt-5 mb-5 d-flex flex-row justify-content-around">
+          <div>
+            <%= f.submit "OK!", class: "btn btn-lg btn-primary rounded-pill mr-5" %>
+          </div>
+          <div>
+            <%= link_to "DELETE", photo_path(@photo), method: :delete, data: { confirm: "本当に削除しますか？この操作は取り消せません。" }, class: "btn btn-lg btn-dark rounded-pill" %>
+          </div>
         </div>
       </div>
     </div>
