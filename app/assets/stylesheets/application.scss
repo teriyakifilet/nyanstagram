@@ -22,11 +22,22 @@
  @import '@fortawesome/fontawesome-free/scss/v4-shims';
 
 /*全体*/
-
 .field_with_errors {
   display: contents;
 }
 
+/*エラーメッセージ*/
+.error-alert>ul {
+  padding-left: 0% !important;
+}
+
+.error-message {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: #DD3444;
+}
+
+/*リンク*/
 a {
   text-decoration: none !important;
   color: #ff8fa3 !important;
@@ -46,7 +57,11 @@ a:hover {
 }
 
 .btn-primary>a {
-  color: white !important;
+  color: #000 !important;
+}
+
+.btn-primary>a:hover {
+  color: white;
 }
 
 .btn-outline-primary {

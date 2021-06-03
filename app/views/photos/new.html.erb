@@ -3,22 +3,23 @@
     <%= render 'shared/error_messages', model: f.object%>
     <div class="row">
       <div class="col">
-        <h4 class="text-center">新規ねこちゃん写真投稿</h4>
+        <h2 class="text-center">NEW POST</h2>
       </div>
     </div>
   <div>
   <div class="row mt-5 justify-content-center">
-    <div class="col-sm-6 center-block text-center">
-      <div class="form-group">
-        <label for="photo_cat_photo">おしゃしん</label><span class="badge badge-danger">必須</span>
+    <div class="col col-12 col-sm-12 col-lg-6 center-block text-center">
+      <div class="form-group mb-4">
+        <label for="photo_cat_photo"><h4>おしゃしん </h4></label><span class="badge badge-danger">必須</span>
         <%= f.file_field :cat_photo, class: "form-control" %>
       </div>
-      <div class="form-group">
-        <label for="photo_detail">コメント</label><span class="form-text text-muted">（255文字以内）
+      <div class="form-group mb-4">
+        <label for="photo_detail"><h4>コメント</h4></label><br>
+        <span class="form-text text-muted">（255文字以内）</span>
         <%= f.text_area :detail, maxlength:"255", class: "form-control" %>
       </div>
-      <div class="form-group">
-        <label for="photo_cat_id">うつっているねこちゃん</label><span class="badge badge-danger">必須</span><br>
+      <div class="form-group mb-4">
+        <label for="photo_cat_id"><h4>うつっているねこちゃん </h4></label><span class="badge badge-danger">必須</span><br>
         <%= f.collection_check_boxes(:cat_ids, current_user.cats.all, :id, :cat_name) do |b| %>
           <%= b.label class: "form-control mt-3" do %>
             <%= b.check_box + b.text %>
@@ -26,7 +27,7 @@
         <% end %>
       </div>
       <div class="form-group mt-5">
-        <%= f.submit "登録する", class: "btn btn-primary" %>
+        <h3><%= f.submit "OK!", class: "btn btn-lg btn-primary rounded-pill" %></h3>
       </div>
     </div>
   </div>
