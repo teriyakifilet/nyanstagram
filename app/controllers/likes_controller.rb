@@ -5,7 +5,7 @@ class LikesController < ApplicationController
 
   def index
     @user = User.includes(:likes).find(params[:user_id])
-    @likes = @user.likes.includes(:photo).page(params[:page]).per(6)
+    @likes = @user.likes.includes(:photo).page(params[:page]).per(9)
   end
 
   def create

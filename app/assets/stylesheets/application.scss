@@ -129,10 +129,15 @@ h2:before {
   height: 100%;
   content: '';
   border: 4px solid #000;
+  pointer-events: none;
 }
 
 h2>a {
   color: white !important;
+}
+
+h2>a:hover {
+  color: #000 !important;
 }
 
 /*ページネーション*/
