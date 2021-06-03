@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def show
     @cats = @user.cats
-    @photos = @user.photos.page(params[:page]).per(6)
+    @photos = @user.photos.order('created_at DESC').page(params[:page]).per(6)
   end
 
   def edit; end
