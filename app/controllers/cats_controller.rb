@@ -10,8 +10,8 @@ class CatsController < ApplicationController
     @cats = Cat.order('created_at DESC').limit(6)
     if user_signed_in? && current_user.following.present?
       @user = User.includes(:following).find(current_user.id)
-      @following_cats = @user.following.ids
-      @following_cats_photos = Photo.where(cats: @following_cats).order('created_at DESC').limit(6)
+      @following_cats = @user.following.includes(:photos)
+      @following_cats_photos = Photo.joins(:cat_photos).where("cat_photos.cat_id":  @following_cats.map(&:id)).order('created_at DESC').limit(6)
     end
   end
 
