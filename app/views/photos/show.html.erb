@@ -1,20 +1,20 @@
-<div class="container-fluid mt-5">
+<div class="container mt-5">
   <div class="row d-flex flex-row align-items-start justify-content-around">
-    <div class="col-sm-8">
-      <%= image_tag @photo.cat_photo, class: "photo-image m-2" %>
+    <div class="col col-12 col-sm-12 col-lg-8 p-4">
+      <%= image_tag @photo.cat_photo, class: "img-fluid" %>
     </div>
-    <div class="col-sm-4 text-right">
-      <ul>
-        <li><h4><%= @photo.detail %></h4></li>
-        <li><h5><%= @photo.created_at.to_s(:datetime_jp) %></h5></li>
-        <li><h5><%= render 'likes/like', photo: @photo %><%= link_to @photo.user.user_name, user_path(@photo.user), class: "ml-3" %></li>
+    <div class="col col-12 col-sm-12 col-lg-4 p-4 text-right">
+      <ul class="mr-auto mx-auto text-right">
+        <li><h3><%= @photo.detail %></h3></li>
+        <li><h5><%= @photo.created_at.to_s(:datetime_jp) %><%= render 'likes/like', photo: @photo %></li>
+        <li><h5><%= link_to @photo.user.user_name, user_path(@photo.user), class: "ml-3" %></li>
         <% if user_signed_in? && current_user == @photo.user %>
-          <li><span class="btn btn-primary mt-2"><%= link_to "編集する", edit_photo_path(@photo) %></li>
+          <li><span class="btn btn-outline-primary rounded-pill"><%= link_to "EDIT", edit_photo_path(@photo) %></li>
         <% end %>
       </ul>
       <div class="row mt-3 d-flex flex-row justify-content-around">
         <% @photo.cats.each do |cat| %>
-         <div class="col-sm-6 text-center">
+         <div class="col col-6 col-sm-6 col-lg-6 mb-5 text-center">
           <%= link_to cat_path(cat) do %>
             <span><%= cat.cat_name %></span><br>
             <%= image_tag cat.icon, class: "rounded-circle m-2", size: "100x100" %>
