@@ -3,22 +3,26 @@
     <%= render 'shared/error_messages', model: f.object%>
     <div class="row">
       <div class="col">
-        <h4 class="text-center">ユーザー情報編集</h4>
+        <h2 class="text-center">ユーザー情報編集</h2>
       </div>
     </div>
     <div class="row mt-5 justify-content-center">
-      <div class="col-sm-6 center-block text-center">
-        <div class="field form-group">
-          <label for="user_user_name">ユーザー名</label>
+      <div class="col col-12 col-sm-12 col-lg-6 center-block text-center">
+        <div class="field form-group mt-3 mb-4">
+          <label for="user_user_name"><h4>ユーザー名</h4></label><span class="badge badge-danger">必須</span><br>
           <span class="form-text text-muted">（4文字以上）</span>
           <%= f.text_field :user_name, autocomplete: "nickname", class: "form-control" %>
         </div>
-        <div class="field form-group">
-          <label for="user_user_profile">プロフィール</label>
+        <div class="field form-group mb-4">
+          <label for="user_user_profile"><h4>プロフィール</h4></label>
           <%= f.text_area :user_profile, autocomplete: "profile", class: "form-control" %>
         </div>
-        <div class="actions form-group mt-5">
-          <%= f.submit "更新する", class: "btn btn-primary mr-4" %>
-          <%= link_to "退会する", user_path(@user), method: :delete, data: { confirm: "本当に退会しますか？この操作は取り消せません。" }, class: "btn btn-dark" %>
+        <div class="actions form-group mt-5 mb-5 d-flex flex-row justify-content-around">
+          <div>
+            <%= f.submit "OK!", class: "btn btn-lg btn-primary rounded-pill mr-4" %>
+          </div>
+          <div>
+            <%= link_to "DELETE", user_path(@user), method: :delete, data: { confirm: "本当に退会しますか？この操作は取り消せません。" }, class: "btn btn-lg btn-dark rounded-pill" %>
+          </div>
         </div>
      <% end %>
