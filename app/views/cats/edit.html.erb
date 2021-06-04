@@ -3,37 +3,41 @@
     <%= render 'shared/error_messages', model: f.object%>
     <div class="row">
       <div class="col">
-        <h4 class="text-center">ねこちゃん編集</h4>
+        <h2 class="text-center">EDIT CAT</h4>
       </div>
     </div>
     <div class="row mt-5 justify-content-center">
-      <div class="col-sm-6 center-block text-center">
-        <div class="form-group">
-          <label for="cat_cat_name">おなまえ</label><span class="badge badge-danger">必須</span>
+      <div class="col col-12 col-sm-12 col-lg-6 center-block text-center">
+        <div class="form-group mb-4">
+          <label for="cat_cat_name"><h4>おなまえ</h4></label><span class="badge badge-danger">必須</span>
           <%= f.text_field :cat_name, maxlength:"40", class: "form-control" %>
         </div>
-        <div class="form-group">
-          <label for="cat_cat_age">ねんれい<span class="badge badge-secondary">数字のみ</span></label>
+        <div class="form-group mb-4">
+          <label for="cat_cat_age"><h4>ねんれい</h4><span class="badge badge-secondary">数字のみ</span></label>
           <%= f.text_field :cat_age, class: "form-control" %>
           <span class="form-text text-muted">
             ※1才未満は0で記入してください。
           </span>
         </div>
-        <div class="form-group">
-          <label for="cat_cat_sex_id">せいべつ</label><span class="badge badge-danger">必須</span>
+        <div class="form-group mb-4">
+          <label for="cat_cat_sex_id"><h4>せいべつ</h4></label><span class="badge badge-danger">必須</span>
           <%= f.collection_select(:cat_sex_id, CatSex.all, :id, :name, {}, {class: "form-control"}) %>
         </div>
-        <div class="form-group">
-          <label for="cat_cat_breed_id">ひんしゅ</label><span class="badge badge-danger">必須</span>
+        <div class="form-group mb-4">
+          <label for="cat_cat_breed_id"><h4>ひんしゅ</h4></label><span class="badge badge-danger">必須</span>
           <%= f.collection_select(:cat_breed_id, CatBreed.all, :id, :name, {}, {class: "form-control"}) %>
         </div>
-        <div class="form-group">
-          <label for="cat_icon">おしゃしん</label><span class="badge badge-danger">必須</span>
-          <%= f.file_field :icon, class: "form-control-file" %>
+        <div class="form-group mb-4">
+          <label for="cat_icon"><h4>おしゃしん</h4></label><span class="badge badge-danger">必須</span>
+          <%= f.file_field :icon, class: "form-control" %>
         </div>
-        <div class="form-group mt-5">
-          <%= f.submit "編集する", class: "btn btn-primary mr-4" %>
-          <%= link_to "削除する", cat_path(@cat), method: :delete, data: { confirm: "本当に削除しますか？この操作は取り消せません。" }, class: "btn btn-dark" %>
+        <div class="form-group mt-5 mb-5 d-flex flex-row justify-content-around">
+          <div>
+            <%= f.submit "OK!", class: "btn btn-lg btn-primary rounded-pill mr-4" %>
+          </div>
+          <div>
+            <%= link_to "DELETE", cat_path(@cat), method: :delete, data: { confirm: "本当に削除しますか？この操作は取り消せません。" }, class: "btn btn-lg btn-dark rounded-pill" %>
+          </div>
         </div>
       </div>
     </div>
