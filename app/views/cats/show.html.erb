@@ -1,37 +1,43 @@
 <div class="container mt-5">
   <div class="row d-flex flex-row align-items-start justify-content-between">
-    <div class="col-sm-4 block-center">
-      <div class="d-flex flex-row justify-content-center align-items-center">
-        <h2 class="m-3"><%= @cat.cat_name%></h2>
-        <%= render 'relationships/follow', cat: @cat %>
-      </div>
-      <div class="text-center">
-        <%= image_tag @cat.icon, class: "rounded-circle", size: "140x140" %>
-      </div>
-      <div>
-        <ul class="mt-4">
-          <li><%= link_to "#{@cat.user.user_name}さん", user_path(@cat.user) %>ちのねこちゃん
-          <li>品種 <%= @cat.cat_breed.name %>
-          <li>性別 <%= @cat.cat_sex.name %>
-          <% if @cat.cat_age.present? %>
-            <li>年齢 <%= @cat.cat_age %>さい
-          <% end %>
-          <% if user_signed_in? && current_user.id == @cat.user_id%>
-            <li><span class="btn btn-primary mt-3"><%= link_to "編集する", edit_cat_path(@cat) %></span>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-    <div class="col-sm-8 block-center">
+    <div class="col col-12 col-sm-12 col-lg-4 block-center">
       <div class="row">
         <div class="col">
-          <h4 class="text-center m-4">PHOTOS</h4>
+          <h2 class="text-center"><%= @cat.cat_name%></h2>
+        </div>
+      </div>
+      <div class="row d-flex flex-column text-center">
+        <div class="col mt-3 mb-2">
+          <%= image_tag @cat.icon, class: "rounded-circle", size: "140x140" %>
+        </div>
+        <div class="col">
+          <%= render 'relationships/follow', cat: @cat %>
+        </div>
+      </div>
+      <div class="mx-auto">
+          <ul class="mt-4 text-left">
+            <li><%= link_to "#{@cat.user.user_name}さん", user_path(@cat.user) %>ちのねこちゃん
+            <li>品種 <%= @cat.cat_breed.name %>
+            <li>性別 <%= @cat.cat_sex.name %>
+            <% if @cat.cat_age.present? %>
+              <li>年齢 <%= @cat.cat_age %>さい
+            <% end %>
+            <% if user_signed_in? && current_user.id == @cat.user_id%>
+              <li class="text-center"><span class="btn btn-outline-primary rounded-pill mt-3"><%= link_to "EDIT", edit_cat_path(@cat) %></span>
+            <% end %>
+          </ul>
+      </div>
+    </div>
+    <div class="col col-12 col-sm-12 col-lg-8 block-center">
+      <div class="row">
+        <div class="col">
+          <h2 class="text-center mb-5">PHOTOS</h2>
         </div>
       </div>
       <% if @photos.present? %>
         <div class="row d-flex flex-row ">
           <% @photos.each do |photo| %>
-            <div class="col-sm-4 mb-3">
+            <div class="col col-12 col-sm-12 col-lg-4 mb-3">
               <div class="card border-0">
                 <%= link_to photo_path(photo) do %>
                   <%= image_tag photo.cat_photo, class: "card-img-top" %>

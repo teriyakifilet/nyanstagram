@@ -1,11 +1,13 @@
   <div class="container mt-5">
     <div class="row mt-5 pt-4 mb-5 d-inline">
-      <h4 class="text-center"><%= link_to @user.user_name, user_path(@user) %>'S LIKES</h4>
+      <h2 class="text-center">
+        <%= link_to @user.user_name, user_path(@user) %>'S LIKES
+      </h2>
     </div>
     <% if @likes.present? %>
       <div class="row d-flex justify-content-around">
         <% @likes.each do |like| %>
-          <div class="col-sm-4 mb-3">
+          <div class="col col-12 col-sm-12 col-lg-4 mb-3">
               <div class="card border-0">
                 <%= link_to photo_path(like.photo) do %>
                   <%= image_tag like.photo.cat_photo, class: "card-img-top" %>
