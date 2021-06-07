@@ -23,17 +23,17 @@ RSpec.describe Photo, type: :model do
       it '写真がなければ投稿できない' do
         @photo.cat_photo = nil
         @photo.valid?
-        expect(@photo.errors.full_messages).to include("Cat photo can't be blank")
+        expect(@photo.errors.full_messages).to include("ねこちゃんのお写真を選んでください")
       end
       it '対応するねこが選ばれていないと投稿できない' do
         @photo.cat_ids = ''
         @photo.valid?
-        expect(@photo.errors.full_messages).to include("Cat ids can't be blank")
+        expect(@photo.errors.full_messages).to include("うつっているねこちゃんを選んでください")
       end
       it 'ユーザーidがなければ投稿できない' do
         @photo.user_id = ''
         @photo.valid?
-        expect(@photo.errors.full_messages).to include('User must exist')
+        expect(@photo.errors.full_messages).to include('Userを入力してください')
       end
     end
   end
