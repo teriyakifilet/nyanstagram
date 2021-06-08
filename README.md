@@ -105,13 +105,13 @@ VSCode
 |cat    |reference |null:false, foreign_key: true |
 |photo  |reference |null:false, foreign_key: true |
 
-## likes
+## likesテーブル
 |Column |Type      |Options                       |
 |-------|----------|------------------------------|
 |user   |reference |null:false, foreign_key: true |
 |photo  |reference |null:false, foreign_key: true |
 
-## relationships
+## relationshipsテーブル
 |Column |Type      |Options           |
 |-------|----------|------------------|
 |user   |reference |foreign_key: true |
